@@ -1,0 +1,331 @@
+onLoadName = "ARMA 3 Payday Mod";
+
+onLoadMission = "Arma 3: Payday by Noven";
+
+class Header
+{
+	gameType = RPG; // Game type, see 'class' columns in the table below
+};
+
+
+author = "Noven";
+
+disabledAI = 1;
+
+respawn = "BASE"; 
+
+respawnTemplates[] = {"MenuPosition"};
+
+respawndelay = 30;
+
+corpseLimit = 15;
+
+corpseRemovalMinTime = 10;
+
+corpseRemovalMaxTime = 3600;
+ 
+wreckLimit = 15;
+
+wreckRemovalMinTime = 10;
+
+wreckRemovalMaxTime = 3600; 
+ 
+#include "common.hpp"
+
+class dropMoney
+{
+	idd = 50020;
+	name = "dropMoney";
+	movingEnable = false;
+	enableSimulation = true;
+	onLoad = "uiNamespace setVariable ['dMoney', (_this select 0)]"; 
+
+	class Controls
+	{
+
+
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Noven, v1.063, #Myzefo)
+////////////////////////////////////////////////////////
+
+class n_bg: RscText
+{
+	idc = 1000;
+	x = 0.385417 * safezoneW + safezoneX;
+	y = 0.26909 * safezoneH + safezoneY;
+	w = 0.234896 * safezoneW;
+	h = 0.164936 * safezoneH;
+	colorBackground[] = {-1,-1,-1,0.8};
+};
+class n_dropbutton: RscButton
+{
+	idc = 1606;
+	text = "Drop"; //--- ToDo: Localize;
+	x = 0.56875 * safezoneW + safezoneX;
+	y = 0.368051 * safezoneH + safezoneY;
+	w = 0.0458333 * safezoneW;
+	h = 0.0549786 * safezoneH;
+	onButtonClick = "[] call MP_dropMoney;";
+};
+class n_cashStatic: RscText
+{
+	idc = 1001;
+	text = "Cash:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.280086 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {0,255,0,1};
+};
+class bankStatic: RscText
+{
+	idc = 1002;
+	text = "Bank:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.313073 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {0,255,100,1};
+};
+class n_cashDynamic: RscText
+{
+	idc = 1003;
+	text = "0";
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.280086 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+};
+class n_bankDynamic: RscText
+{
+	idc = 1004;
+	text = "0";
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.313073 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+};
+class n_dropDynamic: RscEdit
+{
+	idc = 50020;
+	text = "1"; //--- ToDo: Localize;
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.390043 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+
+};
+class n_dropStatic: RscText
+{
+	idc = 1006;
+	text = "Drop:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.390043 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {1,1,1,1};
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+
+
+		
+	};
+};
+
+class withdrawMoney
+{
+	idd = 50030;
+	name = "withdrawMoney";
+	movingEnable = false;
+	enableSimulation = true;
+	onLoad = "uiNamespace setVariable ['dMoney', (_this select 0)]"; 
+
+	class Controls
+	{
+
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Noven, v1.063, #Feqipa)
+////////////////////////////////////////////////////////
+
+class n_bg: RscText
+{
+	idc = 1000;
+	x = 0.385417 * safezoneW + safezoneX;
+	y = 0.26909 * safezoneH + safezoneY;
+	w = 0.234896 * safezoneW;
+	h = 0.164936 * safezoneH;
+	colorBackground[] = {-1,-1,-1,0.8};
+};
+class n_dropbutton: RscButton
+{
+	idc = 1600;
+	text = "OK"; //--- ToDo: Localize;
+	x = 0.56875 * safezoneW + safezoneX;
+	y = 0.368051 * safezoneH + safezoneY;
+	w = 0.0458333 * safezoneW;
+	h = 0.0549786 * safezoneH;
+	onButtonClick = "[] call MP_withdraw;";
+};
+class n_cashStatic: RscText
+{
+	idc = 1001;
+	text = "Cash:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.280086 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {0,255,0,1};
+};
+class bankStatic: RscText
+{
+	idc = 1002;
+	text = "Bank:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.313073 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {0,255,100,1};
+};
+class n_cashDynamic: RscText
+{
+	idc = 1003;
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.280086 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+};
+class n_bankDynamic: RscText
+{
+	idc = 1004;
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.313073 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+};
+class n_dropDynamic: RscEdit
+{
+	idc = 50030;
+	text = "1"; //--- ToDo: Localize;
+	x = 0.448438 * safezoneW + safezoneX;
+	y = 0.390043 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+
+};
+class n_dropStatic: RscText
+{
+	idc = 1006;
+	text = "Withdraw:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.390043 * safezoneH + safezoneY;
+	w = 0.0515625 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {1,1,1,1};
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+
+
+		
+	};
+};
+
+class depositMoney
+{
+	idd = 50040;
+	name = "depositMoney";
+	movingEnable = false;
+	enableSimulation = true;
+	onLoad = "uiNamespace setVariable ['dMoney', (_this select 0)]"; 
+
+	class Controls
+	{
+
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Noven, v1.063, #Zekufi)
+////////////////////////////////////////////////////////
+
+class n_bg: RscText
+{
+	idc = 1000;
+	x = 0.385417 * safezoneW + safezoneX;
+	y = 0.26909 * safezoneH + safezoneY;
+	w = 0.234896 * safezoneW;
+	h = 0.164936 * safezoneH;
+	colorBackground[] = {-1,-1,-1,0.8};
+};
+class n_dropbutton: RscButton
+{
+	idc = 1600;
+	text = "OK"; //--- ToDo: Localize;
+	x = 0.56875 * safezoneW + safezoneX;
+	y = 0.368051 * safezoneH + safezoneY;
+	w = 0.0458333 * safezoneW;
+	h = 0.0549786 * safezoneH;
+	onButtonClick = "[] call MP_deposit;";
+};
+class n_cashStatic: RscText
+{
+	idc = 1001;
+	text = "Cash:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.280086 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {0,255,0,1};
+};
+class bankStatic: RscText
+{
+	idc = 1002;
+	text = "Bank:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.313073 * safezoneH + safezoneY;
+	w = 0.034375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {0,255,100,1};
+};
+class n_cashDynamic: RscText
+{
+	idc = 1003;
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.280086 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+};
+class n_bankDynamic: RscText
+{
+	idc = 1004;
+	x = 0.425521 * safezoneW + safezoneX;
+	y = 0.313073 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+};
+class n_dropDynamic: RscEdit
+{
+	idc = 50040;
+	text = "1"; //--- ToDo: Localize;
+	x = 0.436979 * safezoneW + safezoneX;
+	y = 0.390043 * safezoneH + safezoneY;
+	w = 0.0859375 * safezoneW;
+	h = 0.0219914 * safezoneH;
+
+};
+class n_dropStatic: RscText
+{
+	idc = 1006;
+	text = "Deposit:"; //--- ToDo: Localize;
+	x = 0.391146 * safezoneW + safezoneX;
+	y = 0.390043 * safezoneH + safezoneY;
+	w = 0.0401042 * safezoneW;
+	h = 0.0219914 * safezoneH;
+	colorText[] = {1,1,1,1};
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+		
+	};
+};
